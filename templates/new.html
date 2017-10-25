@@ -6,10 +6,12 @@
 
 <body>
   <h2>Create a new ToDo item:</h2><br>
-  <form action="{{ url_for('new') }}" method="get">
+  <form action="{{ url_for('create') }}" method="get">
     Description: <br>
     <input type="text" name="description"><br>
     Deadline: <br>
     <input type="text" name="date"><br>
     <input type="submit" value="Submit">
   </form>
+</body>
+</html>
