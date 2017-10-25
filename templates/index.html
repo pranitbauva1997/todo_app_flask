@@ -13,7 +13,7 @@
   <table>
     {% for entry in list %}
       <tr>
-        <td>{{ entry.description }}</td>
+        <td><a href = "{{ url_for('view', todo_id = entry.id) }}">{{ entry.description }}</a></td>
         <td>{{ entry.date }}</td>
       </tr>
     {% endfor %}
