@@ -6,5 +6,18 @@
 
 <body>
   <h1>Welcome to your ToDo list</h1>
+  <h3><a href="{{ url_for('new') }}">Add new entry to the list</a></h3><br>
+  <br><br>
+
+  Current ToDo entries are:
+  <table>
+    {% for entry in list %}
+      <tr>
+        <td>{{ entry.description }}</td>
+        <td>{{ entry.date }}</td>
+      </tr>
+    {% endfor %}
+
+  </table>
 </body>
 </html>

@@ -13,7 +13,8 @@ session = DBSession()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    list = session.query(List).all()
+    return render_template('index.html', list = list)
 
 @app.route('/new')
 def new():
