@@ -28,6 +28,11 @@ def create():
     session.commit()
     return "Successfully created added to list"
 
+@app.route('/view/<int:todo_id>/')
+def view(todo_id):
+    todo_entry = session.query(List).filter_by(id = todo_id).one()
+    return render_template('view.html', entry = todo_entry)
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
