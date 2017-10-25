@@ -26,7 +26,7 @@ def create():
                       date = request.args['date'])
     session.add(todo_entry)
     session.commit()
-    return "Successfully created added to list"
+    return render_template('view.html', entry = todo_entry)
 
 @app.route('/view/<int:todo_id>/')
 def view(todo_id):
