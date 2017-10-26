@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>ToDo app demo in flask</title>
+</head>
+
+<body>
+  <h2>Edit ToDo:</h2><br>
+  <form action="{{ url_for('edit_handler', todo_id=entry.id) }}" method="get">
+    Description: <br>
+    <input type="text" name="description" value="{{ entry.description }}"><br>
+    Deadline: <br>
+    <input type="text" name="date" value="{{ entry.date }}"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <h3><a href="{{ url_for('index') }}">Go back to home page</a></h3>
+</body>
+</html>

@@ -9,7 +9,8 @@
   <b>Description: </b>{{ entry.description }}<br>
   <b>Date:        </b>{{ entry.date }}<br><br>
 
-  <b><a href="{{url_for('delete', todo_id=entry.id)}}">Delete this entry</a><br><br>
+  <b><a href="{{ url_for('edit', todo_id=entry.id) }}">Edit this entry</a></b><br>
+  <b><a href="{{ url_for('delete', todo_id=entry.id) }}">Delete this entry</a><br><br>
 
   <h3><a href="{{ url_for('index') }}">Go back to home page</a></h3>
 </body>

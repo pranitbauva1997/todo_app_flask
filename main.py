@@ -33,6 +33,20 @@ def view(todo_id):
     todo_entry = session.query(List).filter_by(id = todo_id).one()
     return render_template('view.html', entry = todo_entry)
 
+@app.route('/edit/<int:todo_id>/')
+def edit(todo_id):
+    todo_entry = session.query(List).filter_by(id = todo_id).one()
+    return render_template('edit.html', entry = todo_entry)
+
+@app.route('/edit_handler/<int:todo_id>/', methods = ['GET', 'POST'])
+def edit_handler(todo_id):
+    todo_entry = session.query(List).filter_by(id = todo_id).one()
+    todo_entry.description = request.args['description']
+    todo_entry.date = request.args['date']
+    session.add(todo_entry)
+    session.commit()
+    return render_template('view.html', entry = todo_entry)
+
 @app.route('/delete/<int:todo_id>/')
 def delete(todo_id):
     todo_entry = session.query(List).filter_by(id = todo_id).one()
