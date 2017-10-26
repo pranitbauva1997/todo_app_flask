@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, List
@@ -32,6 +32,13 @@ def create():
 def view(todo_id):
     todo_entry = session.query(List).filter_by(id = todo_id).one()
     return render_template('view.html', entry = todo_entry)
+
+@app.route('/delete/<int:todo_id>/')
+def delete(todo_id):
+    todo_entry = session.query(List).filter_by(id = todo_id).one()
+    session.delete(todo_entry)
+    session.commit()
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.debug = True
